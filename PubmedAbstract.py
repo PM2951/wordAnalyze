@@ -2,6 +2,7 @@ import os
 import math
 import time
 import pandas as pd
+from scipy import stats
 import requests
 import urllib.parse
 import xml.etree.ElementTree as ET
@@ -18,14 +19,15 @@ from PubmedAbstract_utils import getXmlFromURL, pushData, WordSelect, CommonWord
 
 
 args = sys.argv
+control_word = args[1]       #検索ワード
 search_word = args[1]       #検索ワード
-min_year = args[2]            #現在から何年分遡るか
-max_year = args[3]            #現在から何年分遡るか
+min_year = args[3]            #現在から何年分遡るか
+max_year = args[4]            #現在から何年分遡るか
 
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
-def main():
+def main(word):
   
   # pubmed api URL
   BASEURL_SRCH = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi'
@@ -35,7 +37,7 @@ def main():
 
   # pubmed search parameterss
   SOURCE_DB    = 'pubmed'
-  TERM         = search_word 
+  TERM         = word 
   DATE_TYPE    = 'pdat'       
   MIN_DATE     = min_year
   MAX_DATE     = max_year
@@ -85,6 +87,22 @@ def main():
     print('\n')
     total_wards += WordSelect(articleDics)
     list_word= CommonWord(total_wards)
-    WordToFig(list_word, 3)
+    path = os.getcwd()
+    output = f'{path}/wordcloud_{word}.png'
+    WordToFig(list_word, 3, output)
+    return list_word
 
-main()
+ctl = main(control_word)
+sch = main(search_word)
+
+df1 = pd.DataFrame(ctl)
+df1.columns=['word', 'count1']
+df2 = pd.DataFrame(sch)
+df2.columns=['word', 'count2']
+
+df = pd.merge(df1,df2, on='word')
+del df1, df2
+ration = df['count1'].sum()/df['count1'].sum()
+df['RARf'] = (df['count1']/df['count1'])/ration
+df['pvalue'] = [stats.binom_test(s, a, ration) for a,s in zip(list(df['count1']),list(df['count2']))]
+print(df)

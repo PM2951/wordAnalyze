@@ -85,7 +85,7 @@ def CommonWord(total_wards):
   list_word= c.most_common()
   return list_word
 
-def WordToFig(list_word, n):
+def WordToFig(list_word, n, output):
   wordcld = []
   for w in list_word:
     if w[1] >= n:
@@ -100,6 +100,5 @@ def WordToFig(list_word, n):
                         min_font_size=15,
                         )
   wordcloud =wordcloud.generate(wordcld)
-  path = os.getcwd()
-  wordcloud.to_file(f'{path}/wordcloud_{datetime.datetime.now()}.png')
+  wordcloud.to_file(output)
   print('SAVE Fig')
