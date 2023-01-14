@@ -56,34 +56,32 @@ def main():
   QueryKey = rootXml.find('QueryKey').text
   WebEnv = urllib.parse.quote(rootXml.find('WebEnv').text)
   print(f'範囲{MIN_DATE} - {MAX_DATE};  total Count: {Count}')
-
-  # get all article data
-  articleDics = []
-  pushData(rootXml, articleDics)
-  # ceil
-  iterCount = math.ceil(int(Count) / BATCH_NUM)
-  
-  # get all data
-  for i in range(iterCount):
-    print("\r"+str(i)+'/'+str(iterCount),end="")
-    num =1
-    while num <= 3:
-      try:
-        rootXml = getXmlFromURL(BASEURL_FTCH, {
-          'db': SOURCE_DB, 'query_key': QueryKey,
-          'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
-          'retmax': BATCH_NUM, 'retmode': 'xml'})
-        pushData(rootXml,articleDics)
-        num +=10
-      except:
-        time.sleep(10)
-        num +=1
-       
-  total_wards += WordSelect(articleDics)
-      
-  if len(total_wards) == 0:
+  if Count ==0:
     print('論文数が0です')
   else:
+    # get all article data
+    articleDics = []
+    pushData(rootXml, articleDics)
+    # ceil
+    iterCount = math.ceil(int(Count) / BATCH_NUM)
+
+    # get all data
+    for i in range(iterCount):
+      print("\r"+str(i)+'/'+str(iterCount),end="")
+      num =1
+      while num <= 3:
+        try:
+          rootXml = getXmlFromURL(BASEURL_FTCH, {
+            'db': SOURCE_DB, 'query_key': QueryKey,
+            'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
+            'retmax': BATCH_NUM, 'retmode': 'xml'})
+          pushData(rootXml,articleDics)
+          num +=10
+        except:
+          time.sleep(10)
+          num +=1
+
+    total_wards += WordSelect(articleDics)
     list_word= CommonWord(total_wards)
     WordToFig(list_word, 3)
 
