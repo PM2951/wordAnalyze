@@ -15,7 +15,17 @@ import datetime
 import sys
 from PubmedAbstract_utils import getXmlFromURL, pushData, WordSelect, CommonWord, WordToFig
 
-def main(search_word, min_year max_year):
+
+args = sys.argv
+search_word = args[1]       #検索ワード
+min_year = args[2]            #現在から何年分遡るか
+max_year = args[3]            #現在から何年分遡るか
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+
+def main():
+  
   # pubmed api URL
   BASEURL_SRCH = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi'
   BASEURL_FTCH = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi'
@@ -85,13 +95,4 @@ def main(search_word, min_year max_year):
     list_word= CommonWord(total_wards)
     WordToFig(list_word, 3)
 
-
-if __name__ == '__main':
-  nltk.download('punkt')
-  nltk.download('averaged_perceptron_tagger')
-
-  args = sys.argv
-  search_word = args[1]       #検索ワード
-  min_year = args[2]            #現在から何年分遡るか
-  max_year = args[3]            #現在から何年分遡るか
-  main(search_word, min_year max_year)
+main()
