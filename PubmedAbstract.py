@@ -64,6 +64,7 @@ def main():
   
   # get all data
   for i in range(iterCount):
+     print("\r"+str(i)+'/'+str(iterCount),end="")
     try:
       rootXml = getXmlFromURL(BASEURL_FTCH, {
         'db': SOURCE_DB, 'query_key': QueryKey,
