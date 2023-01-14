@@ -1,5 +1,6 @@
 import os
 import math
+import time
 import pandas as pd
 import requests
 import urllib.parse
@@ -72,22 +73,30 @@ def main():
         'retmax': BATCH_NUM, 'retmode': 'xml'})
       pushData(rootXml,articleDics)
     except:
+      time.sleep(10)
       try:
-        print('try again')
         rootXml = getXmlFromURL(BASEURL_FTCH, {
           'db': SOURCE_DB, 'query_key': QueryKey,
           'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
           'retmax': BATCH_NUM, 'retmode': 'xml'})
         pushData(rootXml,articleDics)
       except: 
+        time.sleep(10)
         try:
-          print('try again x2')
           rootXml = getXmlFromURL(BASEURL_FTCH, {
             'db': SOURCE_DB, 'query_key': QueryKey,
             'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
             'retmax': BATCH_NUM, 'retmode': 'xml'})
           pushData(rootXml,articleDics)
-        except: print('skip')
+        except:
+          time.sleep(10)
+          try:
+            rootXml = getXmlFromURL(BASEURL_FTCH, {
+              'db': SOURCE_DB, 'query_key': QueryKey,
+              'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
+              'retmax': BATCH_NUM, 'retmode': 'xml'})
+            pushData(rootXml,articleDics)
+          except: print('skip')
   total_wards += WordSelect(articleDics)
       
   if len(total_wards) == 0:
