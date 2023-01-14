@@ -60,9 +60,6 @@ def main(word):
   print(f'範囲{MIN_DATE} - {MAX_DATE};  total Count: {Count}')
   if Count ==0:
     print('論文数が0です')
-  elif Count >=20000:
-    print('論文数が0の可能性があります'）
-    break
   else:
     # get all article data
     articleDics = []
@@ -73,6 +70,9 @@ def main(word):
     # get all data
     print("\r"+'0/'+str(iterCount),end="")
     for i in range(iterCount):
+      if Count >=17000:
+        print('論文数が0の可能性があります')
+        break
       num =1
       while num <= 3:
         try:
