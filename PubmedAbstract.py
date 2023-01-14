@@ -103,9 +103,8 @@ df2 = pd.DataFrame(sch)
 df2.columns=['word', 'count2']
 
 df = pd.merge(df1,df2, on='word')
-print(df)
 del df1, df2
 ration = df['count1'].sum()/df['count1'].sum()
 df['RARf'] = (df['count1']/df['count1'])/ration
-df['pvalue'] = [stats.binom_test(s, a, ration) for a,s in zip(list(df['count1']),list(df['count2']))]
-print(df)
+# df['pvalue'] = [stats.binom_test(s, a, ration) for a,s in zip(list(df['count1']),list(df['count2']))]
+df.to_csv('f'{path}/wordcloud_{word}.csv')
