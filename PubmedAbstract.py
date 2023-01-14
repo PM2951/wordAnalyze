@@ -161,7 +161,7 @@ for i in range(cycles*4):
   except:
     print('論文数が0です')
 
-print(len(total_wards))
+# print(len(total_wards))
 if len(total_wards) == 0:
   print('論文数が0です')
 else:
@@ -199,6 +199,7 @@ else:
   wordcloud =wordcloud.generate(cword)
   path = os.getcwd()
   wordcloud.to_file(f'{path}/wordcloud_{datetime.datetime.now()}.png')
+  print('SAVE Fig')
 
 #   plt.figure()
 #   plt.axis("off")
