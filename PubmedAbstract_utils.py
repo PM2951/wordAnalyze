@@ -68,22 +68,24 @@ def WordSelect(articleDics):
   return frequent_words
 
 def CommonWord(total_wards):
-  c = collections.Counter(total_wards)
-  #単数と複数形を合わせる（sとesの標準形だけ）
-  key_list = list(c.keys())
-  for k in key_list:
-    if k == 'ET':
-      c.pop('ET')
-    elif k == 'AL':
-      c.pop('AL')
-    elif c[k +'S'] !=0:
+   c = collections.Counter(total_wards)
+   
+   #単数と複数形を合わせる（sとesの標準形だけ）
+   key_list = list(c.keys())
+   for k in key_list:
+    if c[k +'S'] !=0:
       c[k] += c[k +'S']
       c.pop(k +'S')
     elif c[k +'ES'] !=0:
       c[k] += c[k +'ES']
       c.pop(k +'ES')
-  list_word= c.most_common()
-  return list_word
+   poplist = ['ET', 'AL', 'PLANT', 'GENE', 'EXPRESSION', 'ARABIDOPSIS', 'THALIANA', 'ANALYSIS', 'STUDY', 'RESPONSE', 'MUTANT', 'PROCESS, 'ORGAN', STUDIES,
+             'FACTOR', 'TRANSCRIPSTION', 'FUNCTION', 'ROLE', 'ACID', 'INTERACTION', 'REGULATION', 'SPECIES', 'ACTIVATION', 'SEQUENCE,'MECHANISM', 'TREATMENT',
+              'RESULT','LEVEL']
+   for i in poplist:
+      c.pop(i, None)
+   list_word= c.most_common()
+   return list_word
 
 def WordToFig(list_word, n, output):
   wordcld = []
