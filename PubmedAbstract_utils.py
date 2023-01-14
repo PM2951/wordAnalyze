@@ -37,7 +37,7 @@ def pushData(rootXml, articleDics):
           'Abstract' : getTextFromNode(article, 'MedlineCitation/Article/Abstract/AbstractText', ''),
       }
       articleDics.append(OrderedDict(articleDic))
-      return articleDics
+      
 
 def WordSelect(articleDics):
   df_article = pd.DataFrame(articleDics)
