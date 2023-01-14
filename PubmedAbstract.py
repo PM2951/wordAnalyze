@@ -109,5 +109,5 @@ df['RARf'] = (df['count2']/df['count1'])/ration
 df['pvalue'] = [stats.binom_test(v2, df['count2'].sum(), v1/(df['count1'].sum())) for v1, v2 in zip(list(df['count1']),list(df['count2']))]
 path = os.getcwd()
 df.to_csv(f'{path}/wordcloud_df.csv')
-df_filter=df[(df['RARf'] >=3) & (df['pvalue'] < 0.05)
+df_filter=df[(df['RARf'] >=3) & (df['pvalue'] < 0.05)]
 df_filter.to_csv(f'{path}/wordcloud_dffilter.csv')
