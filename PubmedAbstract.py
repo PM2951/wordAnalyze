@@ -20,7 +20,7 @@ from pprint import pprint
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import random
-from tqdm.notebook import tqdm as tqdm
+from tqdm import tqdm
 import datetime
 
 nltk.download('punkt')
