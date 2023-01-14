@@ -200,4 +200,4 @@ else:
   plt.figure()
   plt.axis("off")
   plt.imshow(wordcloud)
-  all_word = list_word
+#list_wordに解析後リストを格納
