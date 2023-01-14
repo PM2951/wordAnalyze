@@ -65,38 +65,20 @@ def main():
   
   # get all data
   for i in range(iterCount):
-     print("\r"+str(i)+'/'+str(iterCount),end="")
-    try:
-      rootXml = getXmlFromURL(BASEURL_FTCH, {
-        'db': SOURCE_DB, 'query_key': QueryKey,
-        'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
-        'retmax': BATCH_NUM, 'retmode': 'xml'})
-      pushData(rootXml,articleDics)
-    except:
-      time.sleep(10)
+    print("\r"+str(i)+'/'+str(iterCount),end="")
+    num =1
+    while num <= 3:
       try:
         rootXml = getXmlFromURL(BASEURL_FTCH, {
           'db': SOURCE_DB, 'query_key': QueryKey,
           'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
           'retmax': BATCH_NUM, 'retmode': 'xml'})
         pushData(rootXml,articleDics)
-      except: 
+        num +=10
+      except:
         time.sleep(10)
-        try:
-          rootXml = getXmlFromURL(BASEURL_FTCH, {
-            'db': SOURCE_DB, 'query_key': QueryKey,
-            'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
-            'retmax': BATCH_NUM, 'retmode': 'xml'})
-          pushData(rootXml,articleDics)
-        except:
-          time.sleep(10)
-          try:
-            rootXml = getXmlFromURL(BASEURL_FTCH, {
-              'db': SOURCE_DB, 'query_key': QueryKey,
-              'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
-              'retmax': BATCH_NUM, 'retmode': 'xml'})
-            pushData(rootXml,articleDics)
-          except: print('skip')
+        num +=1
+       
   total_wards += WordSelect(articleDics)
       
   if len(total_wards) == 0:
