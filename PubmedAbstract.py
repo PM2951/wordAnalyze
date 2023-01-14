@@ -61,7 +61,7 @@ def main(word):
   if Count ==0:
     print('論文数が0です')
   elif Count >=20000:
-    print('論文数が0の可能性があります。）
+    print('論文数が0の可能性があります'）
     break
   else:
     # get all article data
