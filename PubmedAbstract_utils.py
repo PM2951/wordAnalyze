@@ -81,7 +81,7 @@ def CommonWord(total_wards):
       c.pop(k +'ES')
    poplist = ['ET', 'AL', 'PLANT', 'GENE', 'EXPRESSION', 'ARABIDOPSIS', 'THALIANA', 'ANALYSIS', 'STUDY', 'RESPONSE', 'MUTANT', 'PROCESS', 'ORGAN', "STUDIES",
              'FACTOR', 'TRANSCRIPSTION', 'FUNCTION', 'ROLE', 'ACID', 'INTERACTION', 'REGULATION', 'SPECIES', 'ACTIVATION', 'SEQUENCE','MECHANISM', 'TREATMENT',
-              'RESULT','LEVEL']
+              'RESULT','LEVEL',"DATA", 'PATHWAY','OVEREXPRESSION', 'ACTIVITY', 'NUMBER', 'FAMILY', 'FAMILIES', 'GROUP', 'CELL', 'TRANSCRIPT']
    for i in poplist:
       c.pop(i, None)
    list_word= c.most_common()
