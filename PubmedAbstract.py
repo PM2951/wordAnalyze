@@ -103,6 +103,7 @@ df2 = pd.DataFrame(sch)
 df2.columns=['word', 'count2']
 
 df = pd.merge(df1,df2, on='word')
+df = df.dropna()
 del df1, df2
 ration = df['count2'].sum()/df['count1'].sum()
 df['RARf'] = (df['count2']/df['count1'])/ration
