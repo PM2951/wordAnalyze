@@ -1,6 +1,6 @@
 # wordAnalyze
-python PubmedAbstract.py SERCH_WORD YEAR
+python PubmedAbstract.py SERCH_WORD START_YEAR END_YEAR
 
 SERCH_WORD : word
 
-YEAR : Years back from today
+*YEAR : from start to end
