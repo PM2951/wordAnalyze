@@ -60,7 +60,7 @@ max_day = datetime.datetime.now()
 min_day = max_day - datetime.timedelta(days=30 *interval_m)
 total_wards =[]
 # print(f'total year: {cycles*interval_m/12}')
-for i in tqdm(range(cycles*12)): 
+for i in range(cycles*12): 
   # pubmed search parameters
   SOURCE_DB    = 'pubmed'
   TERM         = search_word 
