@@ -79,8 +79,8 @@ def CommonWord(total_wards):
     elif c[k +'ES'] !=0:
       c[k] += c[k +'ES']
       c.pop(k +'ES')
-   poplist = ['ET', 'AL', 'PLANT', 'GENE', 'EXPRESSION', 'ARABIDOPSIS', 'THALIANA', 'ANALYSIS', 'STUDY', 'RESPONSE', 'MUTANT', 'PROCESS, 'ORGAN', STUDIES,
-             'FACTOR', 'TRANSCRIPSTION', 'FUNCTION', 'ROLE', 'ACID', 'INTERACTION', 'REGULATION', 'SPECIES', 'ACTIVATION', 'SEQUENCE,'MECHANISM', 'TREATMENT',
+   poplist = ['ET', 'AL', 'PLANT', 'GENE', 'EXPRESSION', 'ARABIDOPSIS', 'THALIANA', 'ANALYSIS', 'STUDY', 'RESPONSE', 'MUTANT', 'PROCESS', 'ORGAN', "STUDIES",
+             'FACTOR', 'TRANSCRIPSTION', 'FUNCTION', 'ROLE', 'ACID', 'INTERACTION', 'REGULATION', 'SPECIES', 'ACTIVATION', 'SEQUENCE','MECHANISM', 'TREATMENT',
               'RESULT','LEVEL']
    for i in poplist:
       c.pop(i, None)
