@@ -80,7 +80,7 @@ def main(word):
           pushData(rootXml,articleDics)
           num +=10
         except:
-          time.sleep(10)
+          time.sleep(10*num)
           num +=1
       print("\r"+str(i+1)+'/'+str(iterCount),end="")
       
