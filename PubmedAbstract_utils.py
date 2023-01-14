@@ -78,10 +78,11 @@ def CommonWord(total_wards):
       c.pop(k +'S')
     elif c[k +'ES'] !=0:
       c[k] += c[k +'ES']
-      c.pop(k +'ES')
-   poplist = ['ET', 'AL', 'PLANT', 'GENE', 'EXPRESSION', 'ARABIDOPSIS', 'THALIANA', 'ANALYSIS', 'STUDY', 'RESPONSE', 'MUTANT', 'PROCESS', 'ORGAN', "STUDIES",
-             'FACTOR', 'TRANSCRIPSTION', 'FUNCTION', 'ROLE', 'ACID', 'INTERACTION', 'REGULATION', 'SPECIES', 'ACTIVATION', 'SEQUENCE','MECHANISM', 'TREATMENT',
-              'RESULT','LEVEL',"DATA", 'PATHWAY','OVEREXPRESSION', 'ACTIVITY', 'NUMBER', 'FAMILY', 'FAMILIES', 'GROUP', 'CELL', 'TRANSCRIPT']
+      c.pop(k +'ES') 
+   poplist = ['ET', 'AL', 'PLANT', 'GENE', 'PROTEIN','EXPRESSION', 'ARABIDOPSIS', 'THALIANA', 'ANALYSIS', 'STUDY', 'RESPONSE', 'MUTANT', 'PROCESS', 'ORGAN', "STUDIES",
+             'FACTOR', 'TRANSCRIPTION', 'FUNCTION', 'ROLE', 'ACID', 'INTERACTION', 'REGULATION', 'SPECIES', 'ACTIVATION', 'SEQUENCE','MECHANISM', 'TREATMENT',
+              'RESULT','LEVEL',"DATA", 'PATHWAY','OVEREXPRESSION', 'ACTIVITY', 'NUMBER','MEMBER', 'FAMILY', 'FAMILIES', 'GROUP', 'CELL', 'TRANSCRIPT', 'LINE', 
+              'CROP', 'RICE','CONTROL', 'SYSTEM', 'CHANGE']
    for i in poplist:
       c.pop(i, None)
    list_word= c.most_common()
