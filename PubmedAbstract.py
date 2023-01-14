@@ -3,7 +3,7 @@ import sys
 args = sys.argv
 
 search_word = args[1]       #検索ワード
-cycles = args[2]            #現在から何年分遡るか
+cycles = int(args[2])          #現在から何年分遡るか
 
 
 import os
@@ -59,7 +59,7 @@ interval_m = 3
 max_day = datetime.datetime.now()
 min_day = max_day - datetime.timedelta(days=30 *interval_m)
 total_wards =[]
-print(f'total year: {cycles*interval_m/12}')
+# print(f'total year: {cycles*interval_m/12}')
 for i in tqdm(range(cycles)): 
   # pubmed search parameters
   SOURCE_DB    = 'pubmed'
