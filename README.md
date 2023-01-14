@@ -1,5 +1,5 @@
 # wordAnalyze
-python PubmedAbstract.py CONTROL_WORD SERCH_WORD START_YEAR END_YEAR
+python PubmedAbstract.py SERCH_WORD1 SERCH_WORD2 START_YEAR END_YEAR
 
 SERCH_WORD : word
 
