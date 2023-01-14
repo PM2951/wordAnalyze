@@ -197,7 +197,10 @@ else:
                         min_font_size=15,
                         )
   wordcloud =wordcloud.generate(cword)
-  plt.figure()
-  plt.axis("off")
-  plt.imshow(wordcloud)
+  path = os.getcwd()
+  wordcloud.to_file(f'{path}/wordcloud_{datetime.datetime.now()}.png')
+
+#   plt.figure()
+#   plt.axis("off")
+#   plt.imshow(wordcloud)
 #list_wordに解析後リストを格納
