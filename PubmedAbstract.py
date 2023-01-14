@@ -66,8 +66,8 @@ def main():
     iterCount = math.ceil(int(Count) / BATCH_NUM)
 
     # get all data
+    print("\r"+'0/'+str(iterCount),end="")
     for i in range(iterCount):
-      print("\r"+str(i)+'/'+str(iterCount),end="")
       num =1
       while num <= 3:
         try:
@@ -80,7 +80,9 @@ def main():
         except:
           time.sleep(10)
           num +=1
-
+      print("\r"+str(i+1)+'/'+str(iterCount),end="")
+      
+    print('\n')
     total_wards += WordSelect(articleDics)
     list_word= CommonWord(total_wards)
     WordToFig(list_word, 3)
