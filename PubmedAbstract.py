@@ -58,7 +58,7 @@ def main(word):
   QueryKey = rootXml.find('QueryKey').text
   WebEnv = urllib.parse.quote(rootXml.find('WebEnv').text)
   print(f'範囲{MIN_DATE} - {MAX_DATE};  total Count: {Count}')
-  if Count ==0:
+  if int(Count) ==0:
     print('論文数が0です')
   else:
     # get all article data
@@ -70,7 +70,7 @@ def main(word):
     # get all data
     print("\r"+'0/'+str(iterCount),end="")
     for i in range(iterCount):
-      if Count >=17000:
+      if int(Count) >=17000:
         print('論文数が0の可能性があります')
         break
       num =1
