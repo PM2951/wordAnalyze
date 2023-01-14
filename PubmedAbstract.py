@@ -108,4 +108,4 @@ ration = df['count1'].sum()/df['count1'].sum()
 df['RARf'] = (df['count1']/df['count1'])/ration
 # df['pvalue'] = [stats.binom_test(s, a, ration) for a,s in zip(list(df['count1']),list(df['count2']))]
 path = os.getcwd()
-df.to_csv(f'{path}/wordcloud_{word}.csv')
+df.to_csv(f'{path}/wordcloud_df.csv')
