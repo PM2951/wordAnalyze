@@ -55,12 +55,12 @@ def getTextFromNode(root, path, fill='', mode=0, attrib='attribute'):
            return root.find(path).get(attrib)
 
 # cycles = 10   
-interval_m = 1
+interval_m = 3
 max_day = datetime.datetime.now()
 min_day = max_day - datetime.timedelta(days=30 *interval_m)
 total_wards =[]
 # print(f'total year: {cycles*interval_m/12}')
-for i in range(cycles*12): 
+for i in range(cycles*4): 
   # pubmed search parameters
   SOURCE_DB    = 'pubmed'
   TERM         = search_word 
