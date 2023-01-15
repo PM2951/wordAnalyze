@@ -19,10 +19,10 @@ from PubmedAbstract_utils import getXmlFromURL, pushData, WordSelect, CommonWord
 
 
 args = sys.argv
-search_word = args[1]       #検索ワード
-min_year = args[2]            #現在から何年分遡るか
-max_year = args[3]            #現在から何年分遡るか
-
+control_word = args[1]       #検索ワード
+search_word = args[2]       #検索ワード
+min_year = args[3]            #現在から何年分遡るか
+max_year = args[4]            #現在から何年分遡るか
 
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -51,7 +51,8 @@ def main(word):
     'usehistory': 'y',
     'datetype': DATE_TYPE,
     'mindate': MIN_DATE,
-    'maxdate': MAX_DATE})
+    'maxdate': MAX_DATE,
+    'sort': 'relevance'})
 
   # get querykey and webenv
   Count = rootXml.find('Count').text
@@ -70,16 +71,16 @@ def main(word):
     # get all data
     print("\r"+'0/'+str(iterCount),end="")
     for i in range(iterCount):
-#       if int(Count) >=17000:
-#         print('論文数が0の可能性があります')
-#         break
+      if int(Count) >=17000:
+        print('論文数が0の可能性があります')
+        break
       num =1
       while num <= 3:
         try:
           rootXml = getXmlFromURL(BASEURL_FTCH, {
             'db': SOURCE_DB, 'query_key': QueryKey,
             'WebEnv': WebEnv, 'retstart': i * BATCH_NUM,
-            'retmax': BATCH_NUM, 'retmode': 'xml'})
+            'retmax': BATCH_NUM, 'retmode': 'xml', 'sort': 'relevance'})
           pushData(rootXml,articleDics)
           num +=10
         except:
@@ -100,14 +101,15 @@ def main(word):
 
 sch = main(search_word)
 
-df1 = pd.DataFrame(sch)
-df1.columns=['word', 'count_ALL']
-# df2 = pd.DataFrame(sch)
-# df2.columns=['word', 'count2']
+
+# df1 = pd.read_csv('/content/wordAnalyze/wordcloud_ALL.csv')
+# df1.columns=['word', 'count1']
+df2 = pd.DataFrame(sch)
+df2.columns=['word', 'countALL']
 
 # df = pd.merge(df1,df2, on='word')
 # del df1, df2
 # ration = df['count2'].sum()/df['count1'].sum()
 # df['RARf'] = (df['count2']/df['count1'])/ration
 path = os.getcwd()
-df1.to_csv(f'{path}/wordcloud_df_ALL.csv')
+df2.to_csv(f'{path}/wordcloud_df.csv', index=False)
