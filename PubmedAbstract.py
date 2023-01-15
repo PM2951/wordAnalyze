@@ -19,10 +19,9 @@ from PubmedAbstract_utils import getXmlFromURL, pushData, WordSelect, CommonWord
 
 
 args = sys.argv
-control_word = args[1]       #検索ワード
-search_word = args[2]       #検索ワード
-min_year = args[3]            #現在から何年分遡るか
-max_year = args[4]            #現在から何年分遡るか
+search_word = args[1]       #検索ワード
+min_year = args[2]            #現在から何年分遡るか
+max_year = args[3]            #現在から何年分遡るか
 
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
