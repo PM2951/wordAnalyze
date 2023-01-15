@@ -19,10 +19,10 @@ from PubmedAbstract_utils import getXmlFromURL, pushData, WordSelect, CommonWord
 
 
 args = sys.argv
-control_word = args[1]       #検索ワード
-search_word = args[2]       #検索ワード
-min_year = args[3]            #現在から何年分遡るか
-max_year = args[4]            #現在から何年分遡るか
+search_word = args[1]       #検索ワード
+min_year = args[2]            #現在から何年分遡るか
+max_year = args[3]            #現在から何年分遡るか
+
 
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -70,9 +70,9 @@ def main(word):
     # get all data
     print("\r"+'0/'+str(iterCount),end="")
     for i in range(iterCount):
-      if int(Count) >=17000:
-        print('論文数が0の可能性があります')
-        break
+#       if int(Count) >=17000:
+#         print('論文数が0の可能性があります')
+#         break
       num =1
       while num <= 3:
         try:
@@ -97,17 +97,17 @@ def main(word):
     WordToFig(list_word, 3, output)
     return list_word
 
-ctl = main(control_word)
+
 sch = main(search_word)
 
 df1 = pd.DataFrame(ctl)
-df1.columns=['word', 'count1']
-df2 = pd.DataFrame(sch)
-df2.columns=['word', 'count2']
+df1.columns=['word', 'count_ALL']
+# df2 = pd.DataFrame(sch)
+# df2.columns=['word', 'count2']
 
-df = pd.merge(df1,df2, on='word')
-del df1, df2
-ration = df['count2'].sum()/df['count1'].sum()
-df['RARf'] = (df['count2']/df['count1'])/ration
-path = os.getcwd()
-df.to_csv(f'{path}/wordcloud_df.csv')
+# df = pd.merge(df1,df2, on='word')
+# del df1, df2
+# ration = df['count2'].sum()/df['count1'].sum()
+# df['RARf'] = (df['count2']/df['count1'])/ration
+# path = os.getcwd()
+df1.to_csv(f'{path}/wordcloud_df_ALL.csv')
