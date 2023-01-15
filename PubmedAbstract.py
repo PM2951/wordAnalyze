@@ -70,9 +70,9 @@ def main(word):
     # get all data
     print("\r"+'0/'+str(iterCount),end="")
     for i in range(iterCount):
-      if int(Count) >=17000:
-        print('論文数が0の可能性があります')
-        break
+#       if int(Count) >=17000:
+#         print('論文数が0の可能性があります')
+#         break
       num =1
       while num <= 3:
         try:
