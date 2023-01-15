@@ -100,7 +100,7 @@ def main(word):
 
 sch = main(search_word)
 
-df1 = pd.DataFrame(ctl)
+df1 = pd.DataFrame(sch)
 df1.columns=['word', 'count_ALL']
 # df2 = pd.DataFrame(sch)
 # df2.columns=['word', 'count2']
