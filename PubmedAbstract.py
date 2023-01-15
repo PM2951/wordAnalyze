@@ -109,5 +109,5 @@ df1.columns=['word', 'count_ALL']
 # del df1, df2
 # ration = df['count2'].sum()/df['count1'].sum()
 # df['RARf'] = (df['count2']/df['count1'])/ration
-# path = os.getcwd()
+path = os.getcwd()
 df1.to_csv(f'{path}/wordcloud_df_ALL.csv')
