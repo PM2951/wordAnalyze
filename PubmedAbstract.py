@@ -14,11 +14,19 @@ import numpy as np
 import urllib.parse
 import uuid
 from collections import OrderedDict
+import sys
 
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-search = 'arabidopsis ssi2'
+new_dir_path_recursive　= 'Figure'
+os.makedirs(new_dir_path_recursive, exist_ok=True)
+new_dir_path_recursive　= 'csv'
+os.makedirs(new_dir_path_recursive, exist_ok=True)
+
+
+search = sys.argv［1］
+# search = 'arabidopsis'
 
 
 # pubmed search parameters
@@ -151,7 +159,7 @@ for k in key_list:
   elif c[k +'ES'] !=0:
     c[k] += c[k +'ES']
     c.pop(k +'ES') 
-  elif c['AT' + k] !=0:
+  elif c['AT' + k] !=0:    #　NPR1 = AtNPR1　にする
     c[k] += c['AT' + k]
     c.pop('AT' + k) 
 
@@ -168,7 +176,7 @@ def fisher(a,b,c,d):
   return st.fisher_exact(data)[1]
 
 
-dfa=pd.read_csv('wordcloud_arabidopsis.csv')
+dfa=pd.read_csv('wordcloud_arabidopsis.csv') #ここを変えればarabidopsis以外も可能
 dfs = pd.DataFrame(list_word)
 dfs.columns=['word', 'count']
 df = pd.merge(dfa,dfs, on ='word')
