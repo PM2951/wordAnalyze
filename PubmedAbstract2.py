@@ -17,13 +17,13 @@ from collections import OrderedDict
 import sys
 
 
-path = os.getcwd()
+path = os.path.dirname(os.path.abspath(__file__))
 try:
-    os.makedirs(path + 'csv')
+    os.mkdir(path + 'csv/')
 except FileExistsError:
     pass
 try:
-    os.makedirs(path + 'Figure')
+    os.mkdir(path + 'Figure/')
 except FileExistsError:
     pass
 
