@@ -17,8 +17,6 @@ from collections import OrderedDict
 import sys
 
 
-# os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
 path = os.getcwd()
 try:
     os.makedirs(path + 'csv')
@@ -34,6 +32,7 @@ search = str(args[1])
 # search = 'arabidopsis'
 
 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # pubmed search parameters
 SOURCE_DB    = 'pubmed'
 TERM         = search
