@@ -30,7 +30,7 @@ except FileExistsError:
 args = sys.argv
 search = str(args[1])
 # search = 'arabidopsis'
-
+print(f'「{search}で検索中」')
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # pubmed search parameters
