@@ -17,13 +17,17 @@ from collections import OrderedDict
 import sys
 
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+# os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-new_dir_path_recursive　= 'Figure'
-os.makedirs(new_dir_path_recursive, exist_ok=True)
-new_dir_path_recursive　= 'csv'
-os.makedirs(new_dir_path_recursive, exist_ok=True)
-
+path = os.getcwd()
+try:
+    os.makedirs(path + 'csv')
+except FileExistsError:
+    pass
+try:
+    os.makedirs(path + 'Figure')
+except FileExistsError:
+    pass
 
 search = sys.argv［1］
 # search = 'arabidopsis'
