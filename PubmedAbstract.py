@@ -29,7 +29,8 @@ try:
 except FileExistsError:
     pass
 
-search = sys.argv［1］
+args = sys.argv
+search = str(args［1］)
 # search = 'arabidopsis'
 
 
