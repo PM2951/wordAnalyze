@@ -19,11 +19,11 @@ import sys
 
 path = os.path.dirname(os.path.abspath(__file__))
 try:
-    os.mkdir(path + 'csv/')
+    os.mkdir(path + '/csv/')
 except FileExistsError:
     pass
 try:
-    os.mkdir(path + 'Figure/')
+    os.mkdir(path + '/Figure/')
 except FileExistsError:
     pass
 
